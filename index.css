@@ -4,7 +4,8 @@
   
   body {
     font-family: 'Roboto', sans-serif;
-    background-color: grey;
+    background-color: black;
+    color: white;
   }
   
   button, input[type="text"] {
@@ -18,6 +19,10 @@
   .container {
     max-width: 600px;
     margin: 0 auto;
+    border: 5px solid white;
+    border-radius: 5px; 
+    background-color: grey;
+    padding: 20px;
   }
   
   .error-message {
@@ -32,10 +37,11 @@
       border-radius: 10px;
       border: 5px solid green;
   }
+  .ingredientdisplay {
+      width: 100%;
+  }
   .recipedisplay {
       width: 100%;
-      border-radius: 10px;
-      border: 5px solid blue;
   }
   .resultbuttons {
       border-bottom: 2px solid grey;
@@ -49,7 +55,21 @@
       background-color: white;
       border-radius: 10px;
       color: gray;
+      cursor: pointer;
+      padding: 20px;
   }
+  .steps {
+      width: 100%;
+      background-color: white;
+      border-radius: 10px;
+      color: gray;
+      padding: 20px;
+  }
+  .selected {
+    background-color: white;
+    border: 5px solid greenyellow;
+    color: gray;
+}
   #substitute {
       border: 2px solid grey;
       background-color: lightgreen;

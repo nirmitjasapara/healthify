@@ -34,14 +34,20 @@ function displayRecipe(responseJson) {
   // iterate through the items array
   responseJson.extendedIngredients.forEach(item => {
     $("#ingredient-list").append(
-      `<div class="checks">
-        <input type="checkbox" id="${item.id}" name="${item.id}" value="${item.id}">
-        <label for="${item.id}"> ${item.originalString}</label></div>`
+      `<div class="checks" value="${item.id}" id="${item.id}">
+        ${item.originalString}</div>`
+    );
+  });
+  responseJson.analyzedInstructions[0].steps.forEach(item => {
+    $("#recipe-list").append(
+      `<div class="steps">
+        ${item.step}</div>`
     );
   });
   //display the results section
   $("#results").addClass("hidden");
   $("#recipe").removeClass("hidden");
+  $("#ingredients").removeClass("hidden");
 }
 function getRecipes(query, number = 10) {
   const params = {
@@ -176,7 +182,7 @@ let TestJson = {
 };
 
 function watchForm() {
-  $("form").submit(event => {
+  $("#search-form").submit(event => {
     event.preventDefault();
     const search = $("#js-search-term").val();
     const number = $("#js-max-results").val();
@@ -185,6 +191,15 @@ function watchForm() {
   });
   $("#results-list").on("click", ".resultbuttons", event => {
     getRecipe(event.currentTarget.value);
+  });
+  $("#ingredient-list").on("click", ".checks", event => {
+    $(event.currentTarget).toggleClass("selected");
+  });
+  $("#ingred-form").submit(event => {
+    event.preventDefault();
+    let subids = [];
+    console.log($(".selected").val());
+    //getSubstitutes(search, number);
   });
 }
 

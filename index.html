@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    
+
     <div class="container">
         <h1>Healthify</h1>
 
-        <form id="js-form">
+        <form id="search-form">
             <label for="search-term">Recipe</label>
             <input type="text" name="search-term" id="js-search-term" required>
 
@@ -31,10 +31,18 @@
         </section>
         <section id="recipe" class="hidden">
           <h2>Recipe</h2>
-          <form class="recipedisplay">
-            <div id="ingredient-list"></div>
+          <div class="recipedisplay" id="recipe-list"></div>
+        </section>
+        <section id="ingredients" class="hidden">
+          <h2>Ingredients</h2>
+          <form class="ingredientdisplay" id="ingred-form">
+            <div id="ingredient-list" multiple="multiple"></div>
             <button type = "submit" id="substitute">Get Substitutes</button>
           </form>
+        </section>
+        <section id="substitutes" class="hidden">
+          <h2>Substitutes</h2>
+          <div class="substitutedisplay" id="substitutes-list"></div>
         </section>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
