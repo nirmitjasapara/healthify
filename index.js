@@ -5,7 +5,7 @@ const spoonKey = "c01b6881ff8043c4a822694f1a34a26c";
 const recipeKey = "9c36614b6emshb6ce99fd4479793p121135jsn550a787842a8";
 const recipeURL =
   "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/";
-const subURL = "https://api.spoonacular.com/food/ingredients/substitutes";
+const subURL = "https://api.spoonacular.com/food/ingredients/";
 
 function formatQueryParams(params) {
   const queryItems = Object.keys(params).map(
@@ -49,6 +49,17 @@ function displayRecipe(responseJson) {
   $("#recipe").removeClass("hidden");
   $("#ingredients").removeClass("hidden");
 }
+function displaySubstitute(responseJson) {
+    console.log(responseJson);
+    // iterate through the items array
+    let appendstr = `<div class="subcontainer">
+    <h4>${responseJson.ingredient}</h4>`;
+    responseJson.substitutes.forEach(item => {
+        appendstr += `<p>${item}</p><hr>`;
+    });
+    appendstr += `</div>`;
+    $("#substitutes-list").append(appendstr);
+  }
 function getRecipes(query, number = 10) {
   const params = {
     query,
@@ -92,6 +103,27 @@ function getRecipe(query) {
       throw new Error(response.statusText);
     })
     .then(responseJson => displayRecipe(responseJson))
+    .catch(err => {
+      $("#js-error-message").text(`Something went wrong: ${err.message}`);
+    });
+}
+function getSubstitutes(subid) {
+  const url = subURL + subid + "/substitutes?apiKey=" + spoonKey;
+  console.log(url);
+
+  fetch(url, {
+    method: "GET",
+    headers: {
+        "Content-Type": "application/json"
+    }
+  })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error(response.statusText);
+    })
+    .then(responseJson => displaySubstitute(responseJson))
     .catch(err => {
       $("#js-error-message").text(`Something went wrong: ${err.message}`);
     });
@@ -186,8 +218,8 @@ function watchForm() {
     event.preventDefault();
     const search = $("#js-search-term").val();
     const number = $("#js-max-results").val();
-    //getRecipes(search, number);
-    displayRecipes(TestJson);
+    getRecipes(search, number);
+    //displayRecipes(TestJson);
   });
   $("#results-list").on("click", ".resultbuttons", event => {
     getRecipe(event.currentTarget.value);
@@ -197,9 +229,11 @@ function watchForm() {
   });
   $("#ingred-form").submit(event => {
     event.preventDefault();
-    let subids = [];
-    console.log($(".selected").val());
-    //getSubstitutes(search, number);
+    $("#substitutes-list").empty();
+    $("#substitutes").removeClass("hidden");
+    $(".selected").each((i, ele) => {
+        getSubstitutes($(ele).attr('value'));
+    });
   });
 }
 
