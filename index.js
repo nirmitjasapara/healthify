@@ -50,7 +50,11 @@ function displayRecipe(responseJson) {
   $("#ingredients").removeClass("hidden");
 }
 function displaySubstitute(responseJson) {
-    console.log(responseJson);
+    if (responseJson.status == "failure")
+    {
+        console.log("could not find substitute");
+        return;
+    }
     // iterate through the items array
     let appendstr = `<div class="subcontainer">
     <h4>${responseJson.ingredient}</h4>`;
