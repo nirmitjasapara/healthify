@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Healthify</title>
-    <link rel="shortcut icon" href="">
+    <link rel="shortcut icon" href="#">
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
@@ -20,10 +20,10 @@
         </div>
         <form id="search-form">
             <label for="search-term">Recipe</label>
-            <input type="text" name="search-term" id="js-search-term" required>
+            <input type="text" name="search-term" id="search-term" required>
 
             <label for="max-results">Maximum results to return</label>
-            <input type="number" name="max-results" id="js-max-results" value="10">
+            <input type="number" name="max-results" id="max-results" value="10">
 
             <input type="submit" value="Go!">
         </form>
@@ -37,7 +37,7 @@
         </section>
         <section id="recipe" class="hidden">
           <h2>Recipe</h2>
-          <div class="recipedisplay" id="recipe-list"></div>
+          <ol class="recipedisplay" id="recipe-list"></ol>
         </section>
         <section id="ingredients" class="hidden">
           <h2>Ingredients</h2>
@@ -45,7 +45,7 @@
             Then click the Get Substitutes button.</h4>
           <form class="ingredientdisplay" id="ingred-form">
             <div id="ingredient-list"></div>
-            <button type = "submit" id="substitute"><h4>Get Substitutes</h4></button>
+            <button type = "submit" id="substitute">Get Substitutes</button>
           </form>
         </section>
         <section id="substitutes" class="hidden">

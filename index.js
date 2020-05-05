@@ -33,14 +33,14 @@ function displayRecipe(responseJson) {
   // iterate through the items array
   responseJson.extendedIngredients.forEach(item => {
     $("#ingredient-list").append(
-      `<div class="checks" value="${item.id}" id="${item.id}">
-        ${item.originalString}</div>`
+      `<button class="checks" value="${item.id}" id="${item.id}">
+        ${item.originalString}</button>`
     );
   });
   responseJson.analyzedInstructions[0].steps.forEach(item => {
     $("#recipe-list").append(
-      `<div class="steps">
-        ${item.step}</div>`
+      `<li class="steps">
+        ${item.step}</li>`
     );
   });
   //display the results section
@@ -133,14 +133,15 @@ function getSubstitutes(subid) {
 function watchForm() {
   $("#search-form").submit(event => {
     event.preventDefault();
-    const search = $("#js-search-term").val();
-    const number = $("#js-max-results").val();
+    const search = $("#search-term").val();
+    const number = $("#max-results").val();
     getRecipes(search, number);
   });
   $("#results-list").on("click", ".resultbuttons", event => {
     getRecipe(event.currentTarget.value);
   });
   $("#ingredient-list").on("click", ".checks", event => {
+    event.preventDefault();
     $(event.currentTarget).toggleClass("selected");
   });
   $("#ingred-form").submit(event => {
