@@ -51,7 +51,6 @@ function displayRecipe(responseJson) {
 function displaySubstitute(responseJson) {
     if (responseJson.status == "failure")
     {
-        console.log("could not find substitute");
         return;
     }
     // iterate through the items array
@@ -112,7 +111,6 @@ function getRecipe(query) {
 }
 function getSubstitutes(subid) {
   const url = subURL + subid + "/substitutes?apiKey=" + spoonKey;
-  console.log(url);
 
   fetch(url, {
     method: "GET",

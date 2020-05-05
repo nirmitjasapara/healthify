@@ -11,8 +11,13 @@
 <body>
 
     <div class="container">
-        <h1>Healthify</h1>
-
+        <h1 class="title">Healthify</h1>
+        <div class="introbox">
+          <p>Welcome to Healthify! Where we try to make your favorite meals healthier 
+            (while not sacrificing taste)! Simply search for a recipe below, 
+            pick the recipe you are looking for. Then replace the ingredients you cannot or should
+          not eat, and we will provide you with the alternatives to those ingredients!</p>
+        </div>
         <form id="search-form">
             <label for="search-term">Recipe</label>
             <input type="text" name="search-term" id="js-search-term" required>
@@ -26,6 +31,7 @@
         <p id="js-error-message" class="error-message"></p>
         <section id="results" class="hidden">
           <h2>Search results</h2>
+          <h4>Please Click on the recipe you are looking for.</h4>
           <div class="resultlist" id="results-list">
           </div>
         </section>
@@ -35,9 +41,11 @@
         </section>
         <section id="ingredients" class="hidden">
           <h2>Ingredients</h2>
+          <h4>Please Click on to select any ingredients to get the substitute for. 
+            Then click the Get Substitutes button.</h4>
           <form class="ingredientdisplay" id="ingred-form">
             <div id="ingredient-list"></div>
-            <button type = "submit" id="substitute">Get Substitutes</button>
+            <button type = "submit" id="substitute"><h4>Get Substitutes</h4></button>
           </form>
         </section>
         <section id="substitutes" class="hidden">
