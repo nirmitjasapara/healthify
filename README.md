@@ -1,6 +1,6 @@
 # healthify
 
-![Image of Screenshot](https://nirmitjasapara.github.com/images/screenshot.jpg)
+![Image of Screenshot](https://github.com/nirmitjasapara/healthify/blob/master/images/screenshot.png)
 https://nirmitjasapara.github.io/healthify/
 
 Healthify is a simple app where you can find common substitutes for ingredients in recipes.
